@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import dev.donmanuel.recipeappcmp.features.app.data.Screen
-import dev.donmanuel.recipeappcmp.features.feed.ui.FeedRoute
+import dev.donmanuel.recipeappcmp.features.feed.ui.routes.FeedRoute
 
 fun NavController.navigateToFeed(navOptions: NavOptions? = null) {
     navigate(Screen.Home.route)

@@ -6,7 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import dev.donmanuel.recipeappcmp.features.app.data.Screen
-import dev.donmanuel.recipeappcmp.features.search.ui.SearchRoute
+import dev.donmanuel.recipeappcmp.features.search.ui.routes.SearchRoute
 
 fun NavController.navigateToSearch(navOptions: NavOptions? = null) {
     navigate(Screen.Search.route)
