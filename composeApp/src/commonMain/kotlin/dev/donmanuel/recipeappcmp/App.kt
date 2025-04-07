@@ -23,17 +23,11 @@ import org.koin.compose.viewmodel.koinViewModel
 fun App(
     loginViewModel: LoginViewModel = koinViewModel()
 ) {
-
-
     RecipeAppCMPTheme {
-
         KoinContext {
-
             val navController = rememberNavController()
             val appState = rememberAppState(
-                navController,
-                scope = rememberCoroutineScope(),
-                appPreferences = koinInject()
+                navController, scope = rememberCoroutineScope(), appPreferences = koinInject()
             )
 
             var showLoginBottomSheet by remember {

@@ -9,10 +9,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
- fun ErrorContent(
+fun ErrorContent(
     modifier: Modifier = Modifier,
     text: String = "Error in Loading Items"
- ) {
+) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,

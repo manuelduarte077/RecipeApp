@@ -21,32 +21,23 @@ fun rememberAppState(
     appPreferences: AppPreferences
 ): AppState {
 
-    return remember(
-        navController,
-        scope
-    ) {
+    return remember(navController, scope) {
         AppState(navController, scope, appPreferences)
     }
-
 }
 
 
 @Stable
 class AppState(
-    val navController: NavHostController,
-    scope: CoroutineScope,
-    val appPreferences: AppPreferences
+    val navController: NavHostController, scope: CoroutineScope, val appPreferences: AppPreferences
 ) {
 
     private var _isLoggedIn = MutableStateFlow(appPreferences.getBoolean(IS_LOGGED_IN, false))
     val isLoggedIn = _isLoggedIn.asStateFlow()
 
     fun navigateToTabs() = navController.navigateToTabs()
-
     fun navigateToDetail(id: Long) = navController.navigateToDetail(id)
-
     fun navigateToSearch() = navController.navigateToSearch()
-
     fun navigateBack() = navController.navigateUp()
 
     fun updateIsLoggedIn(isLoggedIn: Boolean) {

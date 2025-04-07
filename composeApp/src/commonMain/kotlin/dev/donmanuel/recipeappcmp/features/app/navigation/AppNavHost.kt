@@ -21,11 +21,9 @@ fun AppNavHost(
 ) {
 
     val navController = appState.navController
-
     val tabNavController = rememberNavController()
 
     NavHost(navController, startDestination = startDestination) {
-
         tabsNavGraph(
             tabNavController = tabNavController,
             navigateToDetail = {
@@ -40,8 +38,7 @@ fun AppNavHost(
         searchNavGraph(
             navigateToDetail = {
                 appState.navigateToDetail(it)
-            },
-            onBackPress = appState::navigateBack
+            }, onBackPress = appState::navigateBack
         )
 
         detailNavGraph(
@@ -50,6 +47,4 @@ fun AppNavHost(
             openLoginBottomSheet = openLoginBottomSheet,
         )
     }
-
-
 }

@@ -24,8 +24,7 @@ class DbHelper(
 
     private suspend fun createDb(driverFactory: DatabaseFactory): RecipeAppCmpAppDb {
         return RecipeAppCmpAppDb(
-            driver = driverFactory.createDriver(),
-            RecipeAdapter = Recipe.Adapter(
+            driver = driverFactory.createDriver(), RecipeAdapter = Recipe.Adapter(
                 ingredientsAdapter = listOfStringsAdapter,
                 instructionsAdapter = listOfStringsAdapter
             )

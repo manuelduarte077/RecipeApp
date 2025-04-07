@@ -24,7 +24,6 @@ sealed class Screen(
     val selectedIcon: DrawableResource? = null,
     val unselectedIcon: DrawableResource? = null,
 ) {
-
     data object Search : Screen("search", Res.string.search)
     data object Tabs : Screen("tabs", Res.string.tabs)
     data object Detail : Screen("detail?$RECIPE_ID_ARG={$RECIPE_ID_ARG}", Res.string.detail)

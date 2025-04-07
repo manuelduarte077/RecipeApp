@@ -44,5 +44,4 @@ class FavoriteRecipeDao(
                 .awaitAsOneOrNull() != null
         }
     }
-
 }

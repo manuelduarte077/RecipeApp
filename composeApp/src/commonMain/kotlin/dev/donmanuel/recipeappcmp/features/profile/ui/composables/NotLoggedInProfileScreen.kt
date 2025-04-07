@@ -90,7 +90,6 @@ fun NotLoggedInProfileScreen(
             }
         }
 
-
         Spacer(modifier = Modifier.height(12.dp))
 
         Row(modifier = Modifier.fillMaxWidth().height(45.dp)) {
@@ -111,5 +110,4 @@ fun NotLoggedInProfileScreen(
         }
 
     }
-
 }

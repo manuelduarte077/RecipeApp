@@ -73,9 +73,11 @@ fun TabsScreen(
             ) {
                 val navBackStackEntry by tabNavController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
+
                 tabItems.forEach { topLevelRoute ->
                     val isSelected =
                         currentDestination?.hierarchy?.any { it.route == topLevelRoute.route } == true
+
                     NavigationBarItem(
                         colors = NavigationBarItemDefaults.colors(
                             indicatorColor = Color.Transparent
@@ -83,6 +85,7 @@ fun TabsScreen(
                         icon = {
                             val icon =
                                 if (isSelected) topLevelRoute.selectedIcon else topLevelRoute.unselectedIcon
+
                             val color =
                                 if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.onBackground
                             icon?.let {
