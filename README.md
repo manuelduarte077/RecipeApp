@@ -1,5 +1,8 @@
 This project is a cross-platform application developed with Kotlin Multiplatform and Compose Multiplatform. Below are the key aspects of the project:
 
+<img height="550" src="https://github.com/user-attachments/assets/b924e57a-510a-4e4e-a022-1caef46543dc" />
+
+
 ---
 
 ## **Recipe App KMP Compose Multiplatform**
