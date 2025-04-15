@@ -21,8 +21,10 @@ class RecipeDetailRepositoryImpl(
                     )
                 )
             } else {
-                val recipeDetailApiResponse = recipeDetailRemoteDataSource.getRecipeDetail(id)
-                    ?: return Result.failure(Exception("Recipe not found!"))
+                val recipeDetailApiResponse =
+                    recipeDetailRemoteDataSource.getRecipeDetail(id) ?: return Result.failure(
+                        Exception("Recipe not found!")
+                    )
                 recipeDetailLocalDataSource.saveRecipe(recipeDetailApiResponse)
                 Result.success(recipeDetailApiResponse)
             }

@@ -96,54 +96,46 @@ fun DetailRoute(
 
     if (showAlertDialog) {
 
-        AlertDialog(
-            containerColor = MaterialTheme.colorScheme.background,
-            onDismissRequest = {
-                showAlertDialog = false
-            },
-            title = {
-                Text(
-                    text = "Update Favorites",
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold
-                    )
+        AlertDialog(containerColor = MaterialTheme.colorScheme.background, onDismissRequest = {
+            showAlertDialog = false
+        }, title = {
+            Text(
+                text = "Update Favorites", style = MaterialTheme.typography.titleLarge.copy(
+                    fontWeight = FontWeight.Bold
                 )
-            },
-            text = {
-                Text(
-                    text = "Login to Add/Remove Favorites",
-                )
-            },
-            confirmButton = {
-                Button(
-                    colors = ButtonDefaults.buttonColors().copy(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer
-                    ), onClick = {
-                        showAlertDialog = false
-                        openLoginBottomSheet {
-                            detailUiState.value.recipesDetail?.let {
-                                detailViewModel.updateIsFavorite(
-                                    recipeId = it.id,
-                                    isAdding = !it.isFavorite
-                                )
-                            }
+            )
+        }, text = {
+            Text(
+                text = "Login to Add/Remove Favorites",
+            )
+        }, confirmButton = {
+            Button(
+                colors = ButtonDefaults.buttonColors().copy(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer
+                ), onClick = {
+                    showAlertDialog = false
+                    openLoginBottomSheet {
+                        detailUiState.value.recipesDetail?.let {
+                            detailViewModel.updateIsFavorite(
+                                recipeId = it.id, isAdding = !it.isFavorite
+                            )
                         }
-                    }) {
-                    Text("Login", color = MaterialTheme.colorScheme.onPrimary)
-                }
-            },
-            dismissButton = {
-                OutlinedButton(
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primaryContainer),
-                    colors = ButtonDefaults.buttonColors().copy(
-                        containerColor = MaterialTheme.colorScheme.background
-                    ), onClick = {
-                        showAlertDialog = false
-                    }) {
-                    Text("Cancel", color = MaterialTheme.colorScheme.primaryContainer)
-                }
+                    }
+                }) {
+                Text("Login", color = MaterialTheme.colorScheme.onPrimary)
             }
-        )
+        }, dismissButton = {
+            OutlinedButton(
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primaryContainer),
+                colors = ButtonDefaults.buttonColors().copy(
+                    containerColor = MaterialTheme.colorScheme.background
+                ),
+                onClick = {
+                    showAlertDialog = false
+                }) {
+                Text("Cancel", color = MaterialTheme.colorScheme.primaryContainer)
+            }
+        })
 
     }
 
@@ -191,18 +183,14 @@ fun DetailScreen(
                     )
                 }
             }
-
-
         }
     }
-
 }
 
 @Composable
 fun LoadingScreen() {
     Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator()
     }
@@ -241,19 +229,15 @@ fun RecipeDetailContent(
     ) {
 
         RecipeMainContent(
-            recipeItem,
-            onWatchVideoClick
+            recipeItem, onWatchVideoClick
         )
-
-        //Back and Save Button UI
 
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth().padding(WindowInsets.statusBars.asPaddingValues())
                 .padding(
                     vertical = 32.dp
-                ).padding(horizontal = 16.dp)
-                .align(Alignment.TopCenter)
+                ).padding(horizontal = 16.dp).align(Alignment.TopCenter)
         ) {
 
             IconButton(
@@ -261,8 +245,7 @@ fun RecipeDetailContent(
                 modifier = Modifier.padding(horizontal = 8.dp).size(30.dp).background(
                     color = MaterialTheme.colorScheme.background.copy(
                         alpha = 0.8f
-                    ),
-                    shape = CircleShape
+                    ), shape = CircleShape
                 )
             ) {
                 Icon(
@@ -272,16 +255,13 @@ fun RecipeDetailContent(
                 )
             }
 
-
             IconButton(
                 onClick = {
                     onSaveClick(recipeItem)
-                },
-                modifier = Modifier.padding(horizontal = 8.dp).size(30.dp).background(
+                }, modifier = Modifier.padding(horizontal = 8.dp).size(30.dp).background(
                     color = MaterialTheme.colorScheme.background.copy(
                         alpha = 0.8f
-                    ),
-                    shape = CircleShape
+                    ), shape = CircleShape
                 )
             ) {
                 Icon(
@@ -290,23 +270,18 @@ fun RecipeDetailContent(
                     tint = MaterialTheme.colorScheme.onBackground
                 )
             }
-
-
         }
-
     }
 }
 
 @Composable
 fun RecipeMainContent(
-    recipeItem: RecipeItem,
-    onWatchVideoClick: (String) -> Unit
+    recipeItem: RecipeItem, onWatchVideoClick: (String) -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
     ) {
 
-        //Image
         AsyncImage(
             model = recipeItem.imageUrl,
             contentDescription = recipeItem.title,
@@ -319,10 +294,8 @@ fun RecipeMainContent(
             )
         )
 
-        //Other Details
         RecipeDetails(recipeItem)
 
-        //Desc
         Column(
             modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp)
         ) {
@@ -335,31 +308,28 @@ fun RecipeMainContent(
             Text(text = recipeItem.description, style = MaterialTheme.typography.bodySmall)
         }
 
-        //Ingredients
-        IngredientsList(
-            ingredients = recipeItem.ingredients.map {
-                val item = it.split(":")
-                if (item.isNotEmpty() && item.size == 2) {
-                    Pair(item[0].trim().captializeFirstWord(), item[1].trim())
-                } else {
-                    Pair("", "")
-                }
-            }.filter {
-                it.first.isNotEmpty() && it.second.isNotEmpty()
-            }.filterNot {
-                it.first.contains("null") || it.second.contains("null")
+        IngredientsList(ingredients = recipeItem.ingredients.map {
+            val item = it.split(":")
+            if (item.isNotEmpty() && item.size == 2) {
+                Pair(item[0].trim().captializeFirstWord(), item[1].trim())
+            } else {
+                Pair("", "")
             }
-        )
+        }.filter {
+            it.first.isNotEmpty() && it.second.isNotEmpty()
+        }.filterNot {
+            it.first.contains("null") || it.second.contains("null")
+        })
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         Instructions(instructions = recipeItem.instructions)
-
         WatchVideoButton(
-            youtubeLink = recipeItem.youtubeLink,
-            onWatchVideoClick = onWatchVideoClick
+            youtubeLink = recipeItem.youtubeLink, onWatchVideoClick = onWatchVideoClick
         )
 
+        Spacer(modifier = Modifier.height(16.dp))
     }
-
 }
 
 
@@ -367,16 +337,13 @@ fun RecipeMainContent(
 fun RecipeDetails(
     recipeItem: RecipeItem,
 ) {
-
     Column(modifier = Modifier.padding(16.dp)) {
-
         Text(
             text = recipeItem.title,
             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
         )
         Row(
-            modifier = Modifier.padding(top = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically
         ) {
 
             Icon(
@@ -386,7 +353,7 @@ fun RecipeDetails(
             )
             Text(
                 text = recipeItem.duration,
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(start = 4.dp)
             )
 
@@ -401,29 +368,27 @@ fun RecipeDetails(
             )
             Text(
                 text = "${recipeItem.rating} stars",
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(start = 4.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
 
             Text(
                 text = recipeItem.difficulty,
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontWeight = FontWeight.Bold
+                ),
                 modifier = Modifier.padding(start = 4.dp)
             )
         }
-
     }
-
 }
 
 @Composable
 fun IngredientsList(
     ingredients: List<Pair<String, String>>,
 ) {
-
     Column(modifier = Modifier.padding(horizontal = 16.dp)) {
-
         Text(
             text = "Ingredients",
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
@@ -433,58 +398,55 @@ fun IngredientsList(
             IngredientsItem(name = it.first, quantity = it.second)
         }
     }
-
 }
 
 @Composable
 fun IngredientsItem(
-    name: String,
-    quantity: String
+    name: String, quantity: String
 ) {
-
     Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxWidth()
+        horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()
     ) {
-        Text(text = name, style = MaterialTheme.typography.bodySmall)
-        Text(text = quantity, style = MaterialTheme.typography.bodySmall)
+        Text(
+            text = name, style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier.padding(top = 4.dp)
+        )
+        Text(
+            text = quantity, style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier.padding(top = 4.dp)
+        )
     }
-
 }
 
 @Composable
 fun Instructions(
     instructions: List<String>,
 ) {
-
     Column(modifier = Modifier.padding(horizontal = 16.dp)) {
-
         Text(
             text = "Instructions",
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
         )
-
         instructions.forEachIndexed { index, value ->
-            Text(text = "${index + 1} $value", style = MaterialTheme.typography.bodySmall)
+            Text(
+                text = "${index + 1} $value", style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(top = 4.dp)
+            )
         }
     }
-
 }
 
 @Composable
 fun WatchVideoButton(
-    youtubeLink: String,
-    onWatchVideoClick: (String) -> Unit
+    youtubeLink: String, onWatchVideoClick: (String) -> Unit
 ) {
     Button(
         onClick = {
             onWatchVideoClick(youtubeLink)
-        },
-        colors = ButtonDefaults.buttonColors(
+        }, colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             contentColor = MaterialTheme.colorScheme.onPrimaryContainer
-        ),
-        modifier = Modifier.padding(16.dp).fillMaxWidth()
+        ), modifier = Modifier.padding(16.dp).fillMaxWidth()
     ) {
 
         Icon(
@@ -494,10 +456,10 @@ fun WatchVideoButton(
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(
-            "Watch Video", style = MaterialTheme.typography.bodyMedium.copy(
-                color = MaterialTheme.colorScheme.onPrimary
-            )
+            "Watch Video",
+            style = MaterialTheme.typography.titleMedium.copy(
+                fontWeight = FontWeight.Bold
+            ), color = MaterialTheme.colorScheme.onPrimary
         )
     }
-
 }

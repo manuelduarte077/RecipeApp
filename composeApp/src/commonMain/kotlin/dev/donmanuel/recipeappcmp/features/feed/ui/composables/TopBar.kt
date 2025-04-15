@@ -21,10 +21,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TopBar(navigateToSearch: () -> Unit) {
     Column(
-        modifier = Modifier
-            .windowInsetsPadding(WindowInsets.statusBars) //we need to consume status bars padding here, as we are not doing it on the NavHost becoz from there it will apply to all tab screen
-            .background(MaterialTheme.colorScheme.background)
-            .padding(16.dp)
+        modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars)
+            .background(MaterialTheme.colorScheme.background).padding(16.dp)
     ) {
 
         Text(
@@ -46,13 +44,9 @@ fun TopBar(navigateToSearch: () -> Unit) {
                     width = 1.dp,
                     shape = RoundedCornerShape(12.dp),
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.3f)
-                )
-                .padding(horizontal = 16.dp)
-                .clickable {
+                ).padding(horizontal = 16.dp).clickable {
                     navigateToSearch()
                 },
         )
-
     }
-
 }

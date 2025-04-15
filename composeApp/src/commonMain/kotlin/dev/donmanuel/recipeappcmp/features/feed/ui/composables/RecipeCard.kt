@@ -24,24 +24,17 @@ import dev.donmanuel.recipeappcmp.features.common.domain.entities.RecipeItem
 
 @Composable
 fun RecipeCard(
-    recipe: RecipeItem,
-    modifier: Modifier,
-    imageModifier: Modifier
+    recipe: RecipeItem, modifier: Modifier, imageModifier: Modifier
 ) {
 
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
+        horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier
     ) {
 
         AsyncImage(
-            model = recipe.imageUrl,
-            onError = {
+            model = recipe.imageUrl, onError = {
                 println("AsyncImage_onError=${it.result.throwable}")
-            },
-            modifier = imageModifier,
-            contentScale = ContentScale.Crop,
-            contentDescription = null
+            }, modifier = imageModifier, contentScale = ContentScale.Crop, contentDescription = null
         )
 
         Text(

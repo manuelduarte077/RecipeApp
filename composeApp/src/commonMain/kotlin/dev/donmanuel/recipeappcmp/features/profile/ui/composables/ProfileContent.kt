@@ -33,9 +33,7 @@ import recipeapp_cmp.composeapp.generated.resources.avatar
 
 @Composable
 fun ProfileContent(
-    userInfo: User,
-    onEditProfile: () -> Unit,
-    onLogout: () -> Unit
+    userInfo: User, onEditProfile: () -> Unit, onLogout: () -> Unit
 ) {
 
     Column(
@@ -48,10 +46,7 @@ fun ProfileContent(
         Image(
             painter = painterResource(Res.drawable.avatar),
             contentDescription = "Profile Image",
-            modifier = Modifier
-                .size(120.dp)
-                .clip(CircleShape)
-                .border(
+            modifier = Modifier.size(120.dp).clip(CircleShape).border(
                     0.3.dp, MaterialTheme.colorScheme.outline.copy(
                         alpha = 0.5f
                     ), CircleShape
@@ -61,10 +56,8 @@ fun ProfileContent(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            userInfo.email,
-            style = TextStyle(
-                fontSize = 16.sp,
-                color = MaterialTheme.colorScheme.onBackground
+            userInfo.email, style = TextStyle(
+                fontSize = 16.sp, color = MaterialTheme.colorScheme.onBackground
             )
         )
 
@@ -99,8 +92,7 @@ fun ProfileContent(
                 )
             ) {
                 Text(
-                    "Logout", fontSize = 16.sp,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    "Logout", fontSize = 16.sp, color = MaterialTheme.colorScheme.onPrimary
                 )
             }
         }

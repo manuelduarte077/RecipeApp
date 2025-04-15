@@ -28,8 +28,7 @@ import dev.donmanuel.recipeappcmp.features.common.domain.entities.RecipeItem
 
 @Composable
 fun SearchRecipeItem(
-    item: RecipeItem,
-    onRecipeItemClicked: (RecipeItem) -> Unit
+    item: RecipeItem, onRecipeItemClicked: (RecipeItem) -> Unit
 ) {
 
     Row(

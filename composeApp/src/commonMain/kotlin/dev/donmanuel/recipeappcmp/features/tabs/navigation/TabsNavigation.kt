@@ -31,5 +31,4 @@ fun NavGraphBuilder.tabsNavGraph(
             navigateToSearch = navigateToSearch
         )
     }
-
 }

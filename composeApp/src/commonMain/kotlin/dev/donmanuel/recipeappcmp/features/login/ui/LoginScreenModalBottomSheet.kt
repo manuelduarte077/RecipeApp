@@ -107,8 +107,7 @@ fun LoginScreenModalBottomSheet(
                 //Heading
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(top = 24.dp)
-                        .padding(horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                        .padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically
                 ) {
 
                     Text(
@@ -146,23 +145,18 @@ fun LoginScreenModalBottomSheet(
                     Spacer(modifier = Modifier.height(16.dp))
 
                     //Email INput
-
                     OutlinedTextField(
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = MaterialTheme.colorScheme.primaryContainer,
-                            focusedLabelColor = MaterialTheme.colorScheme.primaryContainer,
-                            cursorColor = MaterialTheme.colorScheme.primaryContainer,
-                            focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
-                        ),
-                        value = email,
-                        onValueChange = {
-                            email = it
-                        },
-                        label = {
-                            Text("Email")
-                        },
-                        modifier = Modifier.fillMaxWidth()
+                        focusedBorderColor = MaterialTheme.colorScheme.primaryContainer,
+                        focusedLabelColor = MaterialTheme.colorScheme.primaryContainer,
+                        cursorColor = MaterialTheme.colorScheme.primaryContainer,
+                        focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                    ), value = email, onValueChange = {
+                        email = it
+                    }, label = {
+                        Text("Email")
+                    }, modifier = Modifier.fillMaxWidth()
                     )
 
 
@@ -170,12 +164,12 @@ fun LoginScreenModalBottomSheet(
 
                     OutlinedTextField(
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = MaterialTheme.colorScheme.primaryContainer,
-                            focusedLabelColor = MaterialTheme.colorScheme.primaryContainer,
-                            cursorColor = MaterialTheme.colorScheme.primaryContainer,
-                            focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
-                        ),
+                        focusedBorderColor = MaterialTheme.colorScheme.primaryContainer,
+                        focusedLabelColor = MaterialTheme.colorScheme.primaryContainer,
+                        cursorColor = MaterialTheme.colorScheme.primaryContainer,
+                        focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
                         value = password,
                         onValueChange = {
                             password = it
@@ -189,9 +183,7 @@ fun LoginScreenModalBottomSheet(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    when (
-                        loginState
-                    ) {
+                    when (loginState) {
                         is LoginState.Loading -> {
                             CircularProgressIndicator(
                                 modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -236,6 +228,4 @@ fun LoginScreenModalBottomSheet(
 
         }
     }
-
-
 }

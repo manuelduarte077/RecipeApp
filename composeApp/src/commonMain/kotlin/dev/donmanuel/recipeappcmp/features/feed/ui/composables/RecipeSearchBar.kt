@@ -24,8 +24,7 @@ fun RecipeSearchBar(
     Box(modifier = modifier, contentAlignment = Alignment.CenterStart) {
 
         Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()
+            verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()
         ) {
             Icon(imageVector = Icons.Default.Search, contentDescription = "Search")
             Spacer(modifier = Modifier.width(8.dp))
@@ -37,6 +36,5 @@ fun RecipeSearchBar(
                 )
             )
         }
-
     }
 }

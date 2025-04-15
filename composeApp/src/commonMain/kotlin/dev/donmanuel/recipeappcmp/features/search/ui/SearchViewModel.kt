@@ -38,30 +38,22 @@ class SearchViewModel(
 
     @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
     private fun triggerFetchItems() = viewModelScope.launch {
-        _searchText
-            .debounce(500)
-            .distinctUntilChanged()
-            .flatMapLatest { query ->
+        _searchText.debounce(500).distinctUntilChanged().flatMapLatest { query ->
                 flow {
                     val results = fetchItems(query)
                     emit(results)
                 }
-            }
-            .catch { error ->
+            }.catch { error ->
                 _searchScreenUiState.update {
                     it.copy(
-                        idle = false,
-                        error = error.message
+                        idle = false, error = error.message
                     )
                 }
-            }
-            .collect { results ->
+            }.collect { results ->
 
                 _searchScreenUiState.update {
                     it.copy(
-                        idle = false,
-                        success = true,
-                        results = results
+                        idle = false, success = true, results = results
                     )
                 }
             }

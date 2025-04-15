@@ -23,13 +23,10 @@ fun NavGraphBuilder.detailNavGraph(
 ) {
 
     composable(
-        Screen.Detail.route,
-        arguments = listOf(
-            navArgument(RECIPE_ID_ARG) {
-                type = NavType.LongType
-            }
-        )
-    ) {
+        Screen.Detail.route, arguments = listOf(
+        navArgument(RECIPE_ID_ARG) {
+            type = NavType.LongType
+        })) {
         val recipeId = it.arguments?.getLong(RECIPE_ID_ARG) ?: 0
         DetailRoute(
             recipeId,

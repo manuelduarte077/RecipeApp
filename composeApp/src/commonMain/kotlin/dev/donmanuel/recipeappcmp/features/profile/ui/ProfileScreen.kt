@@ -40,8 +40,7 @@ fun ProfileRoute(
             openLoginBottomSheet {
                 profileViewModel.refresh()
             }
-        }
-    )
+        })
 
 }
 
@@ -60,19 +59,15 @@ fun ProfileScreen(
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors().copy(
                     containerColor = MaterialTheme.colorScheme.background
-                ),
-                title = {
+                ), title = {
                     Text("Profile")
-                }
-            )
-        }
-    ) { innerPadding ->
+                })
+        }) { innerPadding ->
         Column(
             modifier = Modifier.padding(top = innerPadding.calculateTopPadding())
         ) {
             HorizontalDivider(
-                thickness = 0.3.dp,
-                color = MaterialTheme.colorScheme.outline.copy(
+                thickness = 0.3.dp, color = MaterialTheme.colorScheme.outline.copy(
                     alpha = 0.5f
                 )
             )
@@ -81,9 +76,7 @@ fun ProfileScreen(
 
                 !isUserLoggedIn() -> {
                     NotLoggedInProfileScreen(
-                        onLogin = onLogin,
-                        onSignUp = {}
-                    )
+                        onLogin = onLogin, onSignUp = {})
                 }
 
                 profileScreenUiState.isLoading -> {

@@ -38,10 +38,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import org.koin.compose.viewmodel.koinViewModel
 import dev.donmanuel.recipeappcmp.features.common.domain.entities.RecipeItem
 import dev.donmanuel.recipeappcmp.features.common.ui.components.ErrorContent
 import dev.donmanuel.recipeappcmp.features.common.ui.components.Loader
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun FavoritesRoute(
@@ -113,7 +113,6 @@ fun FavoritesScreen(
                 }
             }
         }
-
 
     }
 }
@@ -230,7 +229,5 @@ private fun FavoriteRecipeCard(
                 }
             }
         }
-
     }
-
 }

@@ -39,8 +39,7 @@ fun FeedScreen(
     Scaffold(
         topBar = {
             TopBar(navigateToSearch)
-        }
-    ) { innerPadding ->
+        }) { innerPadding ->
         when {
             feedUiState.recipesListIsLoading -> {
                 Loader()
@@ -64,9 +63,7 @@ fun FeedScreen(
 
 @Composable
 private fun FeedContent(
-    navigateToDetail: (Long) -> Unit,
-    innerPadding: PaddingValues,
-    recipes: List<RecipeItem>
+    navigateToDetail: (Long) -> Unit, innerPadding: PaddingValues, recipes: List<RecipeItem>
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -77,8 +74,7 @@ private fun FeedContent(
         )
     ) {
         item(
-            span = { GridItemSpan(maxLineSpan) }
-        ) {
+            span = { GridItemSpan(maxLineSpan) }) {
             TopRecipesList(
                 title = "Top Recommendations",
                 recipes = recipes.reversed(),
@@ -94,20 +90,15 @@ private fun FeedContent(
 }
 
 private fun LazyGridScope.recipesOfTheWeek(
-    navigateToDetail: (Long) -> Unit,
-    title: String,
-    recipes: List<RecipeItem>
+    navigateToDetail: (Long) -> Unit, title: String, recipes: List<RecipeItem>
 ) {
 
     item(
-        span = { GridItemSpan(maxLineSpan) }
-    ) {
+        span = { GridItemSpan(maxLineSpan) }) {
         Text(
-            text = title,
-            style = MaterialTheme.typography.titleMedium.copy(
+            text = title, style = MaterialTheme.typography.titleMedium.copy(
                 fontSize = 18.sp
-            ),
-            modifier = Modifier.padding(top = 16.dp, start = 16.dp)
+            ), modifier = Modifier.padding(top = 16.dp, start = 16.dp)
         )
     }
 
@@ -116,15 +107,13 @@ private fun LazyGridScope.recipesOfTheWeek(
         val cardPaddingStart = if (index % 2 == 0) 16.dp else 0.dp
         val cardPaddingEnd = if (index % 2 == 0) 0.dp else 16.dp
 
-        val imageModifier =
-            Modifier.fillMaxWidth().height(130.dp).clip(RoundedCornerShape(16.dp))
+        val imageModifier = Modifier.fillMaxWidth().height(130.dp).clip(RoundedCornerShape(16.dp))
         RecipeCard(
             recipe,
             modifier = Modifier.padding(start = cardPaddingStart, end = cardPaddingEnd),
             imageModifier = imageModifier.clickable {
                 navigateToDetail(recipe.id)
-            }
-        )
+            })
     }
 }
 

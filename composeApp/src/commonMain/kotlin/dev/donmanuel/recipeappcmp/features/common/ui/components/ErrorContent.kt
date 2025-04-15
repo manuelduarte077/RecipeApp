@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun ErrorContent(
@@ -20,8 +21,9 @@ fun ErrorContent(
     ) {
         Text(
             text,
+            fontSize = MaterialTheme.typography.bodyLarge.fontSize.value.sp,
             style = MaterialTheme.typography.bodyLarge.copy(
-                color = MaterialTheme.colorScheme.error
+                color = MaterialTheme.colorScheme.error,
             )
         )
     }

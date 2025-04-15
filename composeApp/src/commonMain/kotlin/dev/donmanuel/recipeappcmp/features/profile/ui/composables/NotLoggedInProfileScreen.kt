@@ -33,8 +33,7 @@ import recipeapp_cmp.composeapp.generated.resources.profile_dummy
 
 @Composable
 fun NotLoggedInProfileScreen(
-    onLogin: () -> Unit,
-    onSignUp: () -> Unit
+    onLogin: () -> Unit, onSignUp: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -56,8 +55,7 @@ fun NotLoggedInProfileScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            "You are not Logged In",
-            style = TextStyle(
+            "You are not Logged In", style = TextStyle(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onBackground
@@ -67,10 +65,8 @@ fun NotLoggedInProfileScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            "Login to view your profile",
-            style = TextStyle(
-                fontSize = 16.sp,
-                color = MaterialTheme.colorScheme.onBackground
+            "Login to view your profile", style = TextStyle(
+                fontSize = 16.sp, color = MaterialTheme.colorScheme.onBackground
             )
         )
 

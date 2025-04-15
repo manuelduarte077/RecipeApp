@@ -35,22 +35,20 @@ fun SearchScreenContent(
     ) {
 
         OutlinedTextField(
-            shape = MaterialTheme.shapes.medium,
-            value = searchText,
-            onValueChange = {
+            shape = MaterialTheme.shapes.medium, value = searchText, onValueChange = {
                 onSearchTextChanged(it)
-            },
-            placeholder = {
-                Text(text = "Search Recipe Items...")
-            },
-            modifier = Modifier.background(
+            }, placeholder = {
+                Text(
+                    text = "Search Recipe Items...",
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5f)
+                    )
+                )
+            }, modifier = Modifier.background(
                 MaterialTheme.colorScheme.onPrimary
-            ).fillMaxWidth(),
-            singleLine = true,
-            leadingIcon = {
+            ).fillMaxWidth(), singleLine = true, leadingIcon = {
                 Icon(imageVector = Icons.Default.Search, contentDescription = null)
-            },
-            colors = OutlinedTextFieldDefaults.colors(
+            }, colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = MaterialTheme.colorScheme.primaryContainer,
                 focusedLabelColor = MaterialTheme.colorScheme.primaryContainer,
                 cursorColor = MaterialTheme.colorScheme.primaryContainer,

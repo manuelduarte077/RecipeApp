@@ -33,23 +33,19 @@ fun SearchScreen(
     Scaffold(topBar = {
         TopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.background,
-            ),
-            title = {
-                Text(
-                    text = "Search Recipes"
-                )
-            },
-            navigationIcon = {
-                IconButton(
-                    onClick = onBackPress
-                ) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
-                }
+            containerColor = MaterialTheme.colorScheme.background,
+        ), title = {
+            Text(
+                text = "Search Recipes"
+            )
+        }, navigationIcon = {
+            IconButton(
+                onClick = onBackPress
+            ) {
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
             }
-        )
+        })
     }) { innerPadding ->
-
         Column(
             modifier = Modifier.fillMaxSize().padding(innerPadding),
             verticalArrangement = Arrangement.Center,

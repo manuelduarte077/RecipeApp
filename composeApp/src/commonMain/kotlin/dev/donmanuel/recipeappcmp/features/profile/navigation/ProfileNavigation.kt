@@ -17,11 +17,9 @@ fun NavGraphBuilder.profileNavGraph(
     openLoginBottomSheet: (() -> Unit) -> Unit,
     onLogout: () -> Unit
 ) {
-
     composable(Screen.Profile.route) {
         ProfileRoute(
             isUserLoggedIn, openLoginBottomSheet, onLogout
         )
     }
-
 }

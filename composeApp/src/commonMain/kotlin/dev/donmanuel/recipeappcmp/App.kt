@@ -81,6 +81,5 @@ fun App(
                 onLogout = onLogout
             )
         }
-
     }
 }

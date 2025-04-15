@@ -21,17 +21,13 @@ import dev.donmanuel.recipeappcmp.features.common.domain.entities.RecipeItem
 
 @Composable
 fun TopRecipesList(
-    navigateToDetail: (Long) -> Unit,
-    title: String,
-    recipes: List<RecipeItem>
+    navigateToDetail: (Long) -> Unit, title: String, recipes: List<RecipeItem>
 ) {
     Column {
         Text(
-            text = title,
-            style = MaterialTheme.typography.titleMedium.copy(
+            text = title, style = MaterialTheme.typography.titleMedium.copy(
                 fontSize = 18.sp
-            ),
-            modifier = Modifier.padding(top = 16.dp, start = 16.dp)
+            ), modifier = Modifier.padding(top = 16.dp, start = 16.dp)
         )
 
         LazyRow(
@@ -47,12 +43,8 @@ fun TopRecipesList(
                     modifier = Modifier.width(110.dp),
                     imageModifier = imageModifier.clickable {
                         navigateToDetail(recipe.id)
-                    }
-                )
+                    })
             }
-
         }
-
     }
-
 }

@@ -1,6 +1,5 @@
 package dev.donmanuel.recipeappcmp.features.search.navigation
 
-
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
@@ -16,12 +15,10 @@ fun NavGraphBuilder.searchNavGraph(
     navigateToDetail: (Long) -> Unit,
     onBackPress: () -> Unit
 ) {
-
     composable(Screen.Search.route) {
         SearchRoute(
             navigateToDetail = navigateToDetail,
             onBackPress = onBackPress
         )
     }
-
 }
